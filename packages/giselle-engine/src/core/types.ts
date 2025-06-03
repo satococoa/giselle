@@ -5,6 +5,7 @@ import type {
 } from "@giselle-sdk/github-tool";
 import type { LanguageModelProvider } from "@giselle-sdk/language-model";
 import type { QueryFunction, QueryFunctionParams } from "@giselle-sdk/rag";
+import type { DocumentMetadata, QueryService } from "@giselle-sdk/rag2";
 import type { UsageLimits } from "@giselle-sdk/usage-limits";
 import type { Storage } from "unstorage";
 import type { Vault } from "./vault";
@@ -25,6 +26,9 @@ export interface GiselleEngineContext {
 	vault?: Vault;
 	vectorStoreQueryFunctions?: {
 		github?: GitHubVectorStoreQueryFunction;
+	};
+	vectorStoreQueryServices?: {
+		github?: GitHubVectorStoreQueryService;
 	};
 }
 
@@ -79,6 +83,17 @@ export type GitHubVectorStoreQueryFunction = QueryFunction<
 	GitHubEmbeddingFilter
 >;
 
+// GitHub Query Context for rag2 integration
+export interface GitHubQueryContext {
+	workspaceId: WorkspaceId;
+	owner: string;
+	repo: string;
+}
+
+export type GitHubVectorStoreQueryService<
+	M extends DocumentMetadata = DocumentMetadata,
+> = QueryService<M, GitHubQueryContext>;
+
 export interface GiselleEngineConfig {
 	storage: Storage;
 	sampleAppWorkspaceId?: WorkspaceId;
@@ -93,5 +108,8 @@ export interface GiselleEngineConfig {
 	vault?: Vault;
 	vectorStoreQueryFunctions?: {
 		github?: GitHubVectorStoreQueryFunction;
+	};
+	vectorStoreQueryServices?: {
+		github?: GitHubVectorStoreQueryService;
 	};
 }
