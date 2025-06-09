@@ -276,12 +276,7 @@ async function queryVectorStore(
 								owner,
 								repo,
 							};
-							const res = await github.searchByQuestion({
-								question: query,
-								limit: LIMIT,
-								similarityThreshold: SIMILARITY_THRESHOLD,
-								queryContext: queryContext,
-							});
+							const res = await github.search(query, queryContext, LIMIT);
 							return {
 								type: "vector-store" as const,
 								source,
