@@ -22,7 +22,7 @@
 		"@giselle-sdk/data-type": "workspace:*",
 		"@giselle-sdk/giselle-engine": "workspace:*",
 		"@giselle-sdk/rag": "workspace:*",
-		"@giselle-sdk/rag3": "workspace:*",
+		"@giselle-sdk/rag2": "workspace:*",
 		"@giselle-sdk/github-tool": "workspace:*",
 		"@giselle-sdk/integration": "workspace:*",
 		"@giselle-sdk/supabase-driver": "workspace:*",
